@@ -114,5 +114,6 @@ endif
 let s:prefix = get(g:, 'fzf_command_prefix', '')
 let s:branch_command = s:prefix . 'GBranches'
 let s:tag_command = s:prefix . 'GTags'
-execute 'command! -bang -nargs=* -complete=custom,fzf_checkout#complete_branches ' . s:branch_command . ' call fzf_checkout#list(<bang>0, "branch", <q-args>)'
-execute 'command! -bang -nargs=? -complete=custom,fzf_checkout#complete_tags ' . s:tag_command . ' call fzf_checkout#list(<bang>0, "tag", <q-args>)'
+let s:fullscreen = get(g:, 'fzf_checkout_fullscreen', 0)
+execute 'command! -bang -nargs=* -complete=custom,fzf_checkout#complete_branches ' . s:branch_command . ' call fzf_checkout#list(s:fullscreen, "branch", <q-args>)'
+execute 'command! -bang -nargs=? -complete=custom,fzf_checkout#complete_tags ' . s:tag_command . ' call fzf_checkout#list(s:fullscreen, "tag", <q-args>)'
